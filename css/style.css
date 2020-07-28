@@ -7,3 +7,14 @@ body {
 
   color: white;
 }
+
+h1 {
+  --black: teal;
+  color: var(--black);
+}
+
+@media only screen and (max-width: 800px) {
+  :root {
+    --black: red;
+  }
+}
