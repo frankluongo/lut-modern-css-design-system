@@ -22,3 +22,16 @@ body {
   --textColor: var(--lightGray);
   --background: var(--black);
 }
+
+/* ===================
+* Specificity Levels & Rules
+  h1, div
+  class, attribute
+  ID's
+  !important — Don't ever use
+* Load Order
+  - classes will override elements even if they are defined before
+  - things added further down the page will generally take precedence over anything else
+* Nesting
+  - Nesting takes precedence over load order and single specificity
+*/
