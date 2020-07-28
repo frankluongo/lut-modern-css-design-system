@@ -1,20 +1,24 @@
 :root {
+  /* Define Colors As Colors */
+  --green: #61ff7e;
+  --red: #ff3a20;
+  --yellow: #fcca46;
   --black: #333;
+  --blue: #29339b;
+  --darkBlue: #091540;
+  --gray: #969696;
+  --lightGray: #fffbff;
+  /* Define Colors As Intentions */
+  --background: var(--lightGray);
+  --textColor: var(--black);
 }
 
 body {
-  background-color: var(--black);
+  background-color: var(--background);
 
-  color: white;
+  color: var(--textColor);
 }
-
-h1 {
-  --black: teal;
-  color: var(--black);
-}
-
-@media only screen and (max-width: 800px) {
-  :root {
-    --black: red;
-  }
+.dark {
+  --textColor: var(--lightGray);
+  --background: var(--black);
 }
