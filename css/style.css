@@ -156,6 +156,11 @@ body {
   --backgroundColor: var(--black);
 }
 
+img {
+  display: block;
+  max-width: 100%;
+}
+
 /* Rule */
 
 hr {
@@ -294,4 +299,14 @@ button.cancel:focus {
 }
 .flex.align-center {
   --alignItems: center;
+}
+
+@media (max-width: 400px) {
+  .grid {
+    display: block;
+  }
+
+  .flex {
+    display: block;
+  }
 }
