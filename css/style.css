@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Neuton:400|Work+Sans:400");
+@import url("https://fonts.googleapis.com/css?family=Neuton:400|Work+Sans:400,700");
 
 :root {
   /* Define Colors As Colors */
@@ -9,10 +9,14 @@
   --blue: #29339b;
   --darkBlue: #091540;
   --gray: #969696;
-  --lightGray: #fffbff;
+  --lightGray: #eff0f2;
+  --white: #fff;
   /* Define Colors As Intentions */
-  --background: var(--lightGray);
+  --backgroundColor: var(--lightGray);
   --textColor: var(--black);
+  --lineColor: var(--gray);
+  --dangerColor: var(--red);
+  --primaryColor: var(--yellow);
   /* Typography */
   --sansSerif: "Work Sans", sans-serif;
   --serif: "Neuton", serif;
@@ -20,16 +24,38 @@
   --headingText: var(--serif);
   --bodyText: var(--sansSerif);
   /* Font Sizes */
+  --baseFontSize: 112.5%;
   --h1: 4.209em;
   --h2: 3.157em;
   --h3: 2.369em;
   --h4: 1.777em;
   --h5: 1.333em;
   --smallText: 0.75em;
+  /* Shadow Levels */
+  --level-0: 0 1px 3px 0 rgba(0, 0, 0, 0);
+  --level-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --level-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --level-3: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --level-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  /* Media Queries */
+  --med: "min-width: 400px;";
 }
 
+/* Media Queries */
+
+@media (max-width: 400px) {
+  :root {
+    --baseFontSize: 100%;
+  }
+}
+
+/* Typography */
+
 html {
-  font-size: 100%;
+  font-size: var(--baseFontSize);
 } /*16px*/
 
 body {
@@ -43,8 +69,19 @@ p {
   margin-bottom: 1.15rem;
 }
 
-p a {
+p a,
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a,
+blockquote a {
   color: var(--black);
+
+  text-decoration: none;
+
+  border-bottom: 2px solid var(--green);
 }
 
 h1,
@@ -84,25 +121,177 @@ small,
   font-size: var(--smallText);
 }
 
+blockquote {
+  margin: 0.5em;
+  padding: 2em;
+
+  background-color: var(--white);
+}
+
+blockquote p {
+  margin: 0;
+  max-width: none;
+}
+
+blockquote cite {
+  margin-top: 1em;
+  display: block;
+}
+
+/* General */
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 body {
-  background-color: var(--background);
+  background-color: var(--backgroundColor);
 
   color: var(--textColor);
 }
 .dark {
   --textColor: var(--lightGray);
-  --background: var(--black);
+  --backgroundColor: var(--black);
 }
 
-/* ===================
-* Specificity Levels & Rules
-  h1, div
-  class, attribute
-  ID's
-  !important — Don't ever use
-* Load Order
-  - classes will override elements even if they are defined before
-  - things added further down the page will generally take precedence over anything else
-* Nesting
-  - Nesting takes precedence over load order and single specificity
-*/
+/* Rule */
+
+hr {
+  border-top: 1px solid var(--lineColor);
+}
+
+/* Forms */
+
+::placeholder {
+  color: var(--gray);
+}
+
+label {
+  display: block;
+  font-size: var(--smallText);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+input,
+textarea {
+  padding: 2px 5px;
+
+  border: 1px solid var(--lineColor);
+  border-radius: 4px;
+}
+
+select {
+  border: 1px solid var(--lineColor);
+}
+
+/* Buttons */
+
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  --buttonBackground: var(--primaryColor);
+  --buttonHoverBg: var(--white);
+  --buttonColor: var(--black);
+  padding: 0.5em 1em;
+
+  color: var(--buttonColor);
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  appearance: none;
+  background-color: var(--buttonBackground);
+  border: 1px solid var(--buttonBackground);
+  border-radius: 4px;
+  box-shadow: var(--level-1);
+  cursor: pointer;
+  transition: all 150ms ease-in-out;
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+button:focus,
+input[type="button"]:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus {
+  background-color: var(--buttonHoverBg);
+  box-shadow: var(--level-3);
+  transform: scale(1.05);
+}
+
+button:active,
+input[type="button"]:active,
+input[type="submit"]:active,
+input[type="reset"]:active {
+  box-shadow: var(--level-0);
+  transform: scale(0.9);
+}
+
+input[type="reset"],
+button.cancel {
+  --buttonBackground: var(--dangerColor);
+  --buttonColor: var(--white);
+}
+
+input[type="reset"]:hover,
+button.cancel:hover,
+input[type="reset"]:focus,
+button.cancel:focus {
+  --buttonHoverBg: var(--white);
+  --buttonColor: var(--dangerColor);
+}
+
+/* Components */
+
+/* Sections */
+
+.section {
+  margin-bottom: 4em;
+  margin-top: 4em;
+}
+
+.layout {
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+}
+
+.grid {
+  --gridCols: 2;
+  display: grid;
+  grid-template-columns: repeat(var(--gridCols), 1fr);
+}
+
+.grid.cols-3 {
+  --gridCols: 3;
+}
+.grid.cols-4 {
+  --gridCols: 4;
+}
+.grid.cols-5 {
+  --gridCols: 5;
+}
+.grid.cols-6 {
+  --gridCols: 6;
+}
+
+.flex {
+  --justifyContent: space-between;
+
+  align-items: center;
+  display: flex;
+  justify-content: var(--justifyContent);
+}
+
+.flex.just-center {
+  --justifyContent: center;
+}
+.flex.align-center {
+  --alignItems: center;
+}
