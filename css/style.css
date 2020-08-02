@@ -3,6 +3,7 @@
 :root {
   /* Define Colors As Colors */
   --green: #61ff7e;
+  --greenDark: #469e56;
   --red: #ff3a20;
   --yellow: #fcca46;
   --black: #333;
@@ -42,6 +43,8 @@
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
   /* Media Queries */
   --med: "min-width: 400px;";
+  /* Padding & Margins */
+  --containerPadding: 2.5%;
 }
 
 /* Media Queries */
@@ -76,12 +79,41 @@ h3 a,
 h4 a,
 h5 a,
 h6 a,
-blockquote a {
+blockquote a,
+li a,
+table a,
+figure a {
   color: var(--black);
 
   text-decoration: none;
 
   border-bottom: 2px solid var(--green);
+  transition: all 100ms ease-in-out;
+}
+
+p a:hover,
+h1 a:hover,
+h2 a:hover,
+h3 a:hover,
+h4 a:hover,
+h5 a:hover,
+h6 a:hover,
+blockquote a:hover,
+li a:hover,
+table a:hover,
+figure a:hover,
+p a:focus,
+h1 a:focus,
+h2 a:focus,
+h3 a:focus,
+h4 a:focus,
+h5 a:focus,
+h6 a:focus,
+blockquote a:focus,
+li a:focus,
+table a:focus,
+figure a:focus {
+  background-color: var(--green);
 }
 
 h1,
@@ -264,7 +296,13 @@ button.cancel:focus {
 .layout {
   margin-left: auto;
   margin-right: auto;
-  width: 95%;
+  padding-left: var(--containerPadding);
+  padding-right: var(--containerPadding);
+  width: 100%;
+}
+
+.layout + .layout {
+  margin-top: 3rem;
 }
 
 .grid {
@@ -299,6 +337,29 @@ button.cancel:focus {
 }
 .flex.align-center {
   --alignItems: center;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+
+  padding-left: var(--containerPadding);
+  padding-right: var(--containerPadding);
+
+  background-color: var(--primaryColor);
+  box-shadow: var(--level-1);
+}
+
+.site-footer {
+  padding-bottom: 3em;
+  padding-top: 3em;
+
+  padding-left: var(--containerPadding);
+  padding-right: var(--containerPadding);
+
+  color: var(--white);
+
+  background-color: var(--black);
 }
 
 @media (max-width: 400px) {
